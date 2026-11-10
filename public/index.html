@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>BMS Newsletter</title>
+<meta name="description" content="Beechworth Montessori School newsletter, made easy to read on a phone.">
+<meta name="theme-color" content="#FFF9F4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#161C19" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="BMS News">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="preload" href="fonts/dm-sans-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+
+<header class="bar">
+  <button class="brand" id="home" aria-label="Go to the front page">
+    <img src="icons/mark.png" alt="" width="20" height="34">
+    <span class="brand-text">
+      <span class="brand-name">BMS Newsletter</span>
+      <span class="brand-issue" id="issue-title">&nbsp;</span>
+    </span>
+  </button>
+  <button class="pill" id="open-issues" aria-haspopup="dialog">
+    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3V4Zm0 13a3 3 0 0 1 3-3h11M9 8h6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Issues
+  </button>
+</header>
+
+<nav class="tabs" id="tabs" aria-label="Sections"></nav>
+
+<main class="deck" id="deck" tabindex="-1">
+  <div class="status" id="status">Loading the latest newsletter…</div>
+</main>
+
+<div class="toast" id="toast" hidden></div>
+
+<dialog class="sheet" id="issues" aria-label="Issues">
+  <div class="sheet-head">
+    <h2>Issues</h2>
+    <button class="icon-btn" data-close aria-label="Close">
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+  <div class="sheet-body" id="issue-list"></div>
+</dialog>
+
+<div class="lightbox" id="lightbox" hidden role="dialog" aria-label="Photo viewer">
+  <div class="lb-strip" id="lb-strip"></div>
+  <div class="lb-top">
+    <span class="lb-count" id="lb-count"></span>
+    <button class="icon-btn" id="lb-close" aria-label="Close">
+      <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+  <div class="lb-hint">Tap a picture to zoom</div>
+</div>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>
