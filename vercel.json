@@ -1,0 +1,11 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "installCommand": "python3 -m venv .venv && .venv/bin/pip install -r requirements.txt",
+  "buildCommand": ".venv/bin/python tools/build.py",
+  "outputDirectory": "public",
+  "crons": [
+    { "path": "/api/refresh", "schedule": "30 4 * * *" },
+    { "path": "/api/refresh", "schedule": "0 19 * * *" }
+  ]
+}

@@ -588,6 +588,8 @@ def main():
     built = [i for i in issues if i["built"]]
     index = {"updated": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
              "latest": built[0]["id"] if built else None, "issues": issues}
+    if not built:
+        sys.exit("No issue could be built - leaving the published site as it is.")
     index_path.write_text(json.dumps(index, ensure_ascii=False, indent=1), "utf-8")
     print(f"Done: {len(built)} readable issue(s), {len(issues)} listed. Latest: {index['latest']}")
 

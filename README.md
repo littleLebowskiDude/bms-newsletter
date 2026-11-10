@@ -33,17 +33,25 @@ python tools/build.py --count 8                                # keep more back 
 python tools/build.py --pdf Week-6-Term-4-2026-Newsletter.pdf  # build from a file you downloaded
 ```
 
-## Put it on your phone
+## Hosting
 
-It needs to live at a web address. `.github/workflows/publish.yml` does this with
-GitHub Pages: push this folder to a GitHub repo, set Settings → Pages → Source to
-"GitHub Actions", and it rebuilds every three hours so new issues appear by themselves.
-Open the address on your phone and choose "Add to Home Screen".
+The app is deployed on Vercel from the `main` branch. `vercel.json` tells Vercel to
+install the Python packages, run `tools/build.py` and serve `public/`, so every
+deployment fetches the newest issues. Open the site on your phone and choose
+"Add to Home Screen".
 
-Note that GitHub Pages sites are public, and the newsletters contain children's names
-and photos. They are already public on the school website, but think about whether you
-want a second copy out there; a private host (e.g. Cloudflare Pages behind Access) is
-the alternative.
+To pick up new issues without pushing a commit, `api/refresh.js` is called by a Vercel
+cron twice a day and starts a fresh deployment. It needs two environment variables in
+the Vercel project (Settings -> Environment Variables):
+
+- `DEPLOY_HOOK_URL`: create a hook for `main` under Settings -> Git -> Deploy Hooks and
+  paste its URL here.
+- `CRON_SECRET`: any long random string.
+
+Until those are set, redeploy by hand from the Vercel dashboard when a new issue is out.
+
+The site is public, and the newsletters contain children's names and photos. They are
+already public on the school website, but this is a second copy.
 
 ## When an issue looks wrong
 
